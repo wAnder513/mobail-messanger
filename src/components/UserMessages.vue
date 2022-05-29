@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     sortMessages() {
+        //отсортировать по последнему сообщению
       this.users.sort((a, b) => {
         return a - b;
       });
