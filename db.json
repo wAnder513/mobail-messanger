@@ -1,0 +1,69 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Steve Carell",
+        "avatar": "images.png",
+        "profilePhoto": "profile.png",
+        "phone": "8-800-555-99-99",
+        "online": true,
+        "messagesContact": [{ 
+            "id": 1,
+            "message": "someText",
+            "sendTime": "19:47"
+        }],
+        "messagesCurrentUser": []
+      },
+      {
+        "id": 2,
+        "name": "Ilon Mask",
+        "avatar": "images.png",
+        "profilePhoto": "profile.png",
+        "phone": "8-800-555-99-99",
+        "online": false,
+        "messagesContact": [{ 
+            "id": 1,
+            "message": "someText",
+            "sendTime": "19:47"
+        }],
+        "messagesCurrentUser": []
+      },
+      {
+        "id": 3,
+        "name": "Mark Zuckerberg",
+        "avatar": "images.png",
+        "profilePhoto": "profile.png",
+        "phone": "8-800-555-99-99",
+        "online": true,
+        "messagesContact": [{ 
+            "id": 1,
+            "message": "hello",
+            "sendTime": "19:47"
+        },
+        { 
+            "id": 2,
+            "message": "how are you",
+            "sendTime": "19:48"
+        }],
+        "messagesCurrentUser": [{
+            "id": 1,
+            "message": "Hi, i'm good",
+            "sendTime": "19:49"
+        }]
+      },
+      {
+        "id": 4,
+        "name": "Forest Gump",
+        "avatar": "images.png",
+        "profilePhoto": "profile.png",
+        "phone": "8-800-555-99-99",
+        "online": true,
+        "messagesContact": [],
+        "messagesCurrentUser": [{
+          "id": 1,
+          "message": "Hi forest, you'r running now?",
+          "sendTime": "19:49"
+      }]
+      }
+    ]
+  }
