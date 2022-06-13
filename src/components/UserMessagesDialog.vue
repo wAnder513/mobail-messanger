@@ -1,77 +1,71 @@
 <template>
   <div class="dialog">
     <div class="dialog_container">
-      <img :src="userAcvatar" class="dialog_avatar" />
+      <img :src="require('../assets/' + contact.avatar)" class="dialog_avatar" />
 
       <div class="dialog_person">
-        <div class="dialog_name">{{ user.name }}</div>
-        <div class="dialog_message">{{ general.message }}</div>
+        <div class="dialog_name">{{ contact.name }}</div>
+        
+        <div class="dialog_message">
+
+          <img v-if="!contact.lastMessage.isContact" :src="require('../assets/' + user.avatar)"
+          class="dialog_user-avatar"/>
+          <span>{{ contact.lastMessage.message }}</span>
+        </div>
       </div>
     </div>
 
-    <div class="dialog_time">{{ general.time }}</div>
+    <div class="dialog_time">{{ timeLastMessage }}</div>
   </div>
 </template>
 
 <script>
-import userAvatar from "../assets/images.png";
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
-    return {
-      lastMessageContact: {
-        sendTime: "",
-      },
-      lastMessageUser: {
-        sendTime: "",
-      },
-      general: {
-        time: "",
-        message: "",
-      },
-    };
+    return {};
   },
   props: {
-    user: Object,
-  },
-  created() {
-    this.lastUserMessage();
+    contact: Object,
   },
   computed: {
-    userAcvatar() {
-      return userAvatar;
-    },
-  },
-  methods: {
-    hasMessages(messages) {
-      return messages && messages.length > 0;
-    },
-    lastUserMessage() {
-      if (this.hasMessages(this.user.messagesContact)) {
-        this.lastMessageContact =
-          this.user.messagesContact[this.user.messagesContact.length - 1];
+    ...mapGetters({ user: 'getUser'}),
+    timeLastMessage() {
+      const currentDate = new Date();
+      let visibleDate = "";
+
+      if (
+        `0${
+          currentDate.getMonth() + 1
+        } ${currentDate.getDate()} ${currentDate.getFullYear()}` ===
+        this.contact.lastMessage.sendDate
+      ) {
+        visibleDate = this.contact.lastMessage.sendTime;
+      } else if (
+        `0${currentDate.getMonth()} ${currentDate.getDate()} ${currentDate.getFullYear()}` ===
+        this.contact.lastMessage.sendDate
+      ) {
+        visibleDate = "tomorrow";
+      } else if (
+        String(currentDate.getFullYear()) ===
+        new Date(this.contact.lastMessage.sendDate).toLocaleDateString("en-US", {
+          year: "numeric",
+        })
+      ) {
+        visibleDate = new Date(
+          this.contact.lastMessage.sendDate
+        ).toLocaleDateString("en-US", { month: "short", day: "2-digit" });
       } else {
-        this.lastMessageContact.sendTime = "";
+        visibleDate = new Date(
+          this.contact.lastMessage.sendDate
+        ).toLocaleDateString("en-US", { year: "numeric", month: "short" });
       }
 
-      if (this.hasMessages(this.user.messagesCurrentUser)) {
-        this.lastMessageUser =
-          this.user.messagesCurrentUser[
-            this.user.messagesCurrentUser.length - 1
-          ];
-      } else {
-        this.lastMessageUser.sendTime = "";
-      }
-
-      if (this.lastMessageContact.sendTime > this.lastMessageUser.sendTime) {
-        this.general.time = this.lastMessageContact.sendTime;
-        this.general.message = this.lastMessageContact.message;
-      } else {
-        this.general.time = this.lastMessageUser.sendTime;
-        this.general.message = this.lastMessageUser.message;
-      }
+      return visibleDate;
     },
   },
+  methods: {},
 };
 </script>
 
@@ -94,8 +88,16 @@ export default {
   margin-right: 10px;
 }
 
+.dialog_user-avatar {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
 .dialog_name {
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .dialog_message {

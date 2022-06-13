@@ -2,7 +2,7 @@
   <div class="user" @click="getUserProfile()">
     <div class="user-continer">
       <img class="user_avatar" :src="fakeAvatar" />
-      <div class="user_name">{{ user.name }}</div>
+      <div class="user_name">{{ contact.name }}</div>
     </div>
 
     <div class="user_online" :class="userOnline"></div>
@@ -15,20 +15,20 @@ import fakeAvatar from "../assets/images.png";
 
 export default {
   props: {
-    user: Object,
+    contact: Object,
   },
   computed: {
     fakeAvatar() {
       return fakeAvatar;
     },
     userOnline() {
-      return this.user.online ? "online" : "offline";
+      return this.contact.online ? "online" : "offline";
     },
   },
   methods: {
     ...mapActions(["getCurrentContactsProfile"]),
     getUserProfile() {
-      this.getCurrentContactsProfile(this.user);
+      this.getCurrentContactsProfile(this.contact);
 
       this.$router.push({ path: "/profile"});
     },

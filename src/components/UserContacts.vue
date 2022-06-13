@@ -1,11 +1,11 @@
 <template>
-  <main-wrapper>
-    <template v-slot:header>its header</template>
+  <main-wrapper :title="title">
+    <template v-slot:header></template>
     <template v-slot:main>
         <user-contacts-item
-          v-for="(user, index) in users"
-          :key="`${user.id}-${index}`"
-          :user="user"
+          v-for="(contact, index) in contacts"
+          :key="`${contact.id}-${index}`"
+          :contact="contact"
         ></user-contacts-item>
     </template>
   </main-wrapper>
@@ -22,10 +22,12 @@ export default {
     UserContactsItem,
   },
   data() {
-    return {};
+    return {
+      title: "Contacts"
+    };
   },
   computed: {
-    ...mapGetters({ users: "getUsers" }),
+    ...mapGetters({ contacts: "getContacts" }),
   },
 };
 </script>

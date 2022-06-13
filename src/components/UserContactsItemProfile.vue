@@ -1,9 +1,6 @@
 <template>
-  <main-wrapper :hasBackButton="true">
-    <template v-slot:header>
-      <div class="profile-header">{{ currentUser.name }}</div>
-    </template>
-
+  <main-wrapper :hasBackButton="true" :title="currentUser.name">
+    <template v-slot:header></template>
     <template v-slot:main>
       <div class="profile">
         <img :src="profilePhoto" class="profile_photo" />
@@ -50,10 +47,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.profile-header {
-  margin: 0 auto 0 calc(35% - 70px);
 }
 
 .profile_phone {

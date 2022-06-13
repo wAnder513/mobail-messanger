@@ -1,10 +1,6 @@
 <template>
-  <div class="app_wrapper">
-    
+  <div class="app_wrapper">  
   </div>
-
-    <!-- <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> -->
   <router-view/>
 </template>
 
@@ -13,10 +9,11 @@ import { mapActions } from 'vuex'
 
 export default {
     created() {
-      this.getUsers()
+      this.getContacts()
+      this.getUser()
     },
     methods: {
-      ...mapActions(['getUsers'])
+      ...mapActions(['getContacts', 'getUser'])
     }
 }
 </script>

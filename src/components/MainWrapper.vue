@@ -5,6 +5,8 @@
       <div>Back</div>
     </div>
 
+    <span>{{ title }}</span>
+
     <slot name="header"></slot>
   </header>
   <main>
@@ -24,6 +26,7 @@ export default {
   },
   props: {
     hasBackButton: { type: Boolean, default: false },
+    title: { type: String, default: "" },
   },
   methods: {
     backToPreviousPage() {
@@ -41,6 +44,7 @@ footer {
   padding: 0 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 main {
@@ -56,12 +60,13 @@ footer {
 }
 
 .wrapper_back {
-    display: flex;
-    align-items: center;
+  position: absolute;
+  display: flex;
+  left: 10px;
 }
 
 .wrapper_icon {
-    width: 20px;
-    margin-right: 5px;
+  width: 20px;
+  margin-right: 5px;
 }
 </style>

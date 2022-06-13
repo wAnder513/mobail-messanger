@@ -1,5 +1,8 @@
 {
-    "users": [
+    "user": {
+      "avatar": "user.png"
+    },
+    "contacts": [
       {
         "id": 1,
         "name": "Steve Carell",
@@ -10,9 +13,15 @@
         "messagesContact": [{ 
             "id": 1,
             "message": "someText",
-            "sendTime": "19:47"
+            "sendTime": "08:15"
         }],
-        "messagesCurrentUser": []
+        "messagesCurrentUser": [],
+        "lastMessage": {
+          "isContact": true,
+          "message": "someText",
+          "sendTime": "08:15",
+          "sendDate": "04 04 2022"
+        }
       },
       {
         "id": 2,
@@ -26,7 +35,13 @@
             "message": "someText",
             "sendTime": "19:47"
         }],
-        "messagesCurrentUser": []
+        "messagesCurrentUser": [],
+        "lastMessage": {
+          "isContact": true,
+          "message": "someText",
+          "sendTime": "19:47",
+          "sendDate": "06 13 2022"
+        }
       },
       {
         "id": 3,
@@ -49,7 +64,13 @@
             "id": 1,
             "message": "Hi, i'm good",
             "sendTime": "19:49"
-        }]
+        }],
+        "lastMessage": {
+          "isContact": false,
+          "message": "Hi, i'm good",
+          "sendTime": "23:59",
+          "sendDate": "04 02 2021"
+        }
       },
       {
         "id": 4,
@@ -62,8 +83,14 @@
         "messagesCurrentUser": [{
           "id": 1,
           "message": "Hi forest, you'r running now?",
-          "sendTime": "19:49"
-      }]
+          "sendTime": "19:50"
+      }],
+      "lastMessage": {
+        "isContact": false,
+        "message": "Hi forest, you'r running now?",
+        "sendTime": "19:50",
+        "sendDate": "04 05 2022"
+      }
       }
     ]
   }

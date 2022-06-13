@@ -1,8 +1,8 @@
 <template>
-  <main-wrapper :hasBackButton="true">
+  <main-wrapper :hasBackButton="true" :title="title">
     <template v-slot:header></template>
     <template v-slot:main>
-      <user-messages-dialog v-for="user in users" :key="user.id" :user="user">
+      <user-messages-dialog v-for="contact in contacts" :key="contact.id" :contact="contact">
       </user-messages-dialog>
     </template>
   </main-wrapper>
@@ -18,24 +18,13 @@ export default {
     MainWrapper,
     UserMessagesDialog,
   },
-  created() {
-    this.sortMessages()
+  data() {
+    return {
+      title: "Messages",
+    };
   },
   computed: {
-    ...mapGetters({ users: "getUsers" }),
-  },
-  methods: {
-    sortMessages() {
-        //отсортировать по последнему сообщению
-      this.users.sort((a, b) => {
-        return a - b;
-      });
-
-      return this.users;
-    },
+    ...mapGetters({ contacts: "getContacts" }),
   },
 };
 </script>
-
-<style scoped lang="scss">
-</style>
