@@ -1,7 +1,10 @@
 <template>
-  <div class="user" @click="getUserProfile()">
+  <div class="user" @click="getUserProfile">
     <div class="user-continer">
-      <img class="user_avatar" :src="fakeAvatar" />
+      <img
+        class="user_avatar"
+        :src="require('../../assets/' + contact.avatar)"
+      />
       <div class="user_name">{{ contact.name }}</div>
     </div>
 
@@ -10,30 +13,29 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import fakeAvatar from "../assets/images.png";
+import { mapActions } from 'vuex'
 
 export default {
   props: {
-    contact: Object,
+    contact: Object
   },
   computed: {
-    fakeAvatar() {
-      return fakeAvatar;
-    },
-    userOnline() {
-      return this.contact.online ? "online" : "offline";
-    },
+    userOnline () {
+      return this.contact.online ? 'online' : 'offline'
+    }
   },
   methods: {
-    ...mapActions(["getCurrentContactsProfile"]),
-    getUserProfile() {
-      this.getCurrentContactsProfile(this.contact);
+    ...mapActions(['getCurrentContactsProfile']),
+    getUserProfile () {
+      this.getCurrentContactsProfile(this.contact)
 
-      this.$router.push({ path: "/profile"});
-    },
-  },
-};
+      this.$router.push({
+        path: '/profile',
+        query: { id: this.contact.id }
+      })
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

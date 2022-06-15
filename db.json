@@ -1,96 +1,89 @@
 {
-    "user": {
-      "avatar": "user.png"
-    },
-    "contacts": [
-      {
-        "id": 1,
-        "name": "Steve Carell",
-        "avatar": "images.png",
-        "profilePhoto": "profile.png",
-        "phone": "8-800-555-99-99",
-        "online": true,
-        "messagesContact": [{ 
-            "id": 1,
-            "message": "someText",
-            "sendTime": "08:15"
-        }],
-        "messagesCurrentUser": [],
-        "lastMessage": {
+  "user": {
+    "avatar": "user.png"
+  },
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Steve Carell",
+      "avatar": "images.png",
+      "profilePhoto": "profile.png",
+      "phone": "8-800-555-99-99",
+      "online": true,
+      "chatContact": [
+        {
+          "id": 1,
           "isContact": true,
-          "message": "someText",
+          "message": "I'm in the office still",
           "sendTime": "08:15",
           "sendDate": "04 04 2022"
         }
-      },
-      {
-        "id": 2,
-        "name": "Ilon Mask",
-        "avatar": "images.png",
-        "profilePhoto": "profile.png",
-        "phone": "8-800-555-99-99",
-        "online": false,
-        "messagesContact": [{ 
-            "id": 1,
-            "message": "someText",
-            "sendTime": "19:47"
-        }],
-        "messagesCurrentUser": [],
-        "lastMessage": {
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ilon Mask",
+      "avatar": "images.png",
+      "profilePhoto": "profile.png",
+      "phone": "8-800-555-99-99",
+      "online": false,
+      "chatContact": [
+        {
+          "id": 1,
           "isContact": true,
           "message": "someText",
           "sendTime": "19:47",
-          "sendDate": "06 13 2022"
+          "sendDate": "06 15 2022"
         }
-      },
-      {
-        "id": 3,
-        "name": "Mark Zuckerberg",
-        "avatar": "images.png",
-        "profilePhoto": "profile.png",
-        "phone": "8-800-555-99-99",
-        "online": true,
-        "messagesContact": [{ 
-            "id": 1,
-            "message": "hello",
-            "sendTime": "19:47"
-        },
-        { 
-            "id": 2,
-            "message": "how are you",
-            "sendTime": "19:48"
-        }],
-        "messagesCurrentUser": [{
-            "id": 1,
-            "message": "Hi, i'm good",
-            "sendTime": "19:49"
-        }],
-        "lastMessage": {
-          "isContact": false,
-          "message": "Hi, i'm good",
-          "sendTime": "23:59",
-          "sendDate": "04 02 2021"
-        }
-      },
-      {
-        "id": 4,
-        "name": "Forest Gump",
-        "avatar": "images.png",
-        "profilePhoto": "profile.png",
-        "phone": "8-800-555-99-99",
-        "online": true,
-        "messagesContact": [],
-        "messagesCurrentUser": [{
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mark Zuckerberg",
+      "avatar": "images.png",
+      "profilePhoto": "profile.png",
+      "phone": "8-800-555-99-99",
+      "online": true,
+      "chatContact": [
+        {
           "id": 1,
+          "isContact": false,
+          "message": "hello",
+          "sendTime": "19:47",
+          "sendDate": "04 02 2021"
+        },
+        {
+          "id": 2,
+          "isContact": false,
+          "message": "how are you",
+          "sendTime": "19:48",
+          "sendDate": "04 02 2021"
+        },
+        {
+          "id": 3,
+          "isContact": true,
+          "message": "Hi, i'm good",
+          "sendTime": "19:49",
+          "sendDate": "06 02 2021"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Forest Gump",
+      "avatar": "images.png",
+      "profilePhoto": "profile.png",
+      "phone": "8-800-555-99-99",
+      "online": true,
+      "chatContact": [
+        {
+          "id": 1,
+          "isContact": false,
           "message": "Hi forest, you'r running now?",
-          "sendTime": "19:50"
-      }],
-      "lastMessage": {
-        "isContact": false,
-        "message": "Hi forest, you'r running now?",
-        "sendTime": "19:50",
-        "sendDate": "04 05 2022"
-      }
-      }
-    ]
-  }
+          "sendTime": "19:50",
+          "sendDate": "06 14 2022"
+        }
+      ]
+    }
+  ]
+}

@@ -4,39 +4,45 @@ const routes = [
   {
     path: '/',
     name: 'contacts',
-    component: () => import('../components/UserContacts.vue')
+    component: () => import('../components/Contacts/UserContacts.vue'),
   },
   {
     path: '/messages',
     name: 'messages',
-    component: () => import('../components/UserMessages.vue')
+    component: () => import('../components/Messages/UserMessages.vue'),
+  },
+  {
+    path: '/message',
+    name: 'message',
+    component: () =>
+      import('../components/Messages/UserMessagesDialogCurrent.vue'),
   },
   {
     path: '/settings',
     name: 'settings',
-    component: () => import('../components/UserSettings.vue')
+    component: () => import('../components/UserSettings.vue'),
   },
   {
     path: '/call',
     name: 'call',
-    component: () => import('../components/UserCall.vue')
+    component: () => import('../components/UserCall.vue'),
   },
   {
     path: '/home',
     name: 'home',
-    component: () => import('../components/UserHome.vue')
+    component: () => import('../components/UserHome.vue'),
   },
   {
     path: '/profile',
     name: 'profile',
-    component: () => import('../components/UserContactsItemProfile.vue'),
-    props: true,
+    component: () =>
+      import('../components/Contacts/UserContactsItemProfile.vue'),
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 })
 
 export default router

@@ -1,12 +1,15 @@
 <template>
-  <main-wrapper :hasBackButton="true" :title="currentUser.name">
+  <main-wrapper :hasBackButton="true" :title="currentContact.name">
     <template v-slot:header></template>
     <template v-slot:main>
       <div class="profile">
-        <img :src="profilePhoto" class="profile_photo" />
+        <img
+          :src="require('../../assets/' + currentContact.profilePhoto)"
+          class="profile_photo"
+        />
 
         <div class="profile_container">
-          <div class="profile_phone">{{ currentUser.phone }}</div>
+          <div class="profile_phone">{{ currentContact.phone }}</div>
 
           <div class="profile_name">
             <button class="profile_call">Call</button>
@@ -19,27 +22,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import profilePhoto from "../assets/profile.png";
-import MainWrapper from "./MainWrapper.vue";
+import { mapGetters } from 'vuex'
+import MainWrapper from '../Wrapper/MainWrapper.vue'
 
 export default {
   components: {
-    MainWrapper,
+    MainWrapper
   },
-  data() {
-    return {
-    };
+  data () {
+    return {}
   },
   computed: {
     ...mapGetters({
-      currentUser: "getCurrentContactProfile",
-    }),
-    profilePhoto() {
-      return profilePhoto;
-    },
-  },
-};
+      currentContact: 'getCurrentContactProfile'
+    })
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -50,7 +48,7 @@ export default {
 }
 
 .profile_phone {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .profile_call {
@@ -73,5 +71,7 @@ export default {
 
 .profile_photo {
   width: 100%;
+  height: 390px;
+  margin-bottom: 10px;
 }
 </style>

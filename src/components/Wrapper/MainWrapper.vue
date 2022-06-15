@@ -18,22 +18,22 @@
 </template>
 
 <script>
-import MainWrapperFooter from "./MainWrapperFooter.vue";
+import MainWrapperFooter from './MainWrapperFooter.vue'
 
 export default {
   components: {
-    MainWrapperFooter,
+    MainWrapperFooter
   },
   props: {
     hasBackButton: { type: Boolean, default: false },
-    title: { type: String, default: "" },
+    title: { type: String, default: '' }
   },
   methods: {
-    backToPreviousPage() {
-      this.$router.go(-1);
-    },
-  },
-};
+    backToPreviousPage () {
+      this.$router.go(-1)
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
