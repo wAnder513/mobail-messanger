@@ -31,9 +31,16 @@
         {
           "id": 1,
           "isContact": true,
-          "message": "someText",
+          "message": "I will buy twitter",
           "sendTime": "19:47",
           "sendDate": "06 15 2022"
+        },
+        {
+          "id": "19.06.2022, 20:34:17",
+          "isContact": false,
+          "message": "wow, cool",
+          "sendTime": "20:34",
+          "sendDate": "06 19 2022"
         }
       ]
     },

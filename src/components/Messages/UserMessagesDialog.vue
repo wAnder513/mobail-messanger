@@ -29,65 +29,69 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  data () {
-    return {}
+  data() {
+    return {};
   },
   props: {
-    contact: Object
+    contact: Object,
   },
   computed: {
-    ...mapGetters({ user: 'getUser' }),
-    timeLastMessage () {
+    ...mapGetters({ user: "getUser" }),
+    timeLastMessage() {
       // date display in messages
-      const currentDate = new Date()
-      let visibleDate = ''
+      const currentDate = new Date();
+      let visibleDate = "";
 
       if (
-        `0${currentDate.getMonth() +
-          1} ${currentDate.getDate()} ${currentDate.getFullYear()}` ===
+        `${("0" + (currentDate.getMonth() + 1)).slice(
+          -2
+        )} ${currentDate.getDate()} ${currentDate.getFullYear()}` ===
         this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
       ) {
-        visibleDate = this.contact.chatContact[
-          this.contact.chatContact.length - 1
-        ].sendTime
+        visibleDate =
+          this.contact.chatContact[this.contact.chatContact.length - 1]
+            .sendTime;
       } else if (
-        `0${currentDate.getMonth() + 1} ${currentDate.getDate() -
-          1} ${currentDate.getFullYear()}` ===
+        `${("0" + (currentDate.getMonth() + 1)).slice(
+          -2
+        )} ${currentDate.getDate()} ${
+          currentDate.getDate() - 1
+        } ${currentDate.getFullYear()}` ===
         this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
       ) {
-        visibleDate = 'tomorrow'
+        visibleDate = "tomorrow";
       } else if (
         String(currentDate.getFullYear()) ===
         new Date(
           this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
-        ).toLocaleDateString('en-US', {
-          year: 'numeric'
+        ).toLocaleDateString("en-US", {
+          year: "numeric",
         })
       ) {
         visibleDate = new Date(
           this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
-        ).toLocaleDateString('en-US', { month: 'short', day: '2-digit' })
+        ).toLocaleDateString("en-US", { month: "short", day: "2-digit" });
       } else {
         visibleDate = new Date(
           this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
-        ).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })
+        ).toLocaleDateString("en-US", { year: "numeric", month: "short" });
       }
 
-      return visibleDate
-    }
+      return visibleDate;
+    },
   },
   methods: {
-    ...mapActions(['getCurrentUserDialog']),
-    getCurrentDialog () {
-      this.getCurrentUserDialog(this.contact)
-      
-      this.$router.push({ path: '/message' })
-    }
-  }
-}
+    ...mapActions(["getCurrentUserDialog"]),
+    getCurrentDialog() {
+      this.getCurrentUserDialog(this.contact);
+
+      this.$router.push({ path: "/message" });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

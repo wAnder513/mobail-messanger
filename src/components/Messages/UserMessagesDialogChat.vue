@@ -25,8 +25,13 @@
 
       <div class="chat_message">
         <input class="chat_input" type="text" v-model="inputMessage" />
-        
-        <i v-if="hasInputMessage" class="material-icons chat_send" @click="sendMessage">send</i>
+
+        <i
+          v-if="hasInputMessage"
+          class="material-icons chat_send"
+          @click="sendMessage"
+          >send</i
+        >
       </div>
     </template>
   </main-wrapper>
@@ -41,28 +46,39 @@ export default {
   components: { MainWrapper },
   data() {
     return {
-      inputMessage: "",
+      inputMessage: '',
+      timeMessage: ''
     };
   },
   computed: {
     ...mapGetters({ dialog: "getCurrentUserDialog" }),
     hasInputMessage() {
-      return this.inputMessage && this.inputMessage.length > 0
+      return this.inputMessage && this.inputMessage.length > 0;
     },
+    
     title() {
       return this.dialog.name;
     },
   },
   methods: {
-    ...mapActions(['getContacts']),
+    ...mapActions(["getContacts"]),
     sendMessage() {
-      let contact, newMessage = {};
+      let contact,
+        newMessage = {};
 
       newMessage = {
         id: new Date().toLocaleString(),
         isContact: false,
         message: this.inputMessage,
-        sendTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
+        sendTime: `${
+          new Date().getHours() < 10
+            ? "0" + new Date().getHours()
+            : new Date().getHours()
+        }:${
+          new Date().getMinutes() < 10
+            ? "0" + new Date().getMinutes()
+            : new Date().getMinutes()
+        }`,
         sendDate: `0${
           new Date().getMonth() + 1
         } ${new Date().getDate()} ${new Date().getFullYear()}`,
@@ -73,9 +89,10 @@ export default {
 
       axios.put("http://localhost:3000/contacts/" + this.dialog.id, contact);
 
-      this.getContacts()
+      this.getContacts();
       this.inputMessage = "";
     },
+
   },
 };
 </script>
@@ -85,7 +102,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 5px 0;
+  margin-bottom: 5px;
 }
 
 .chat_contact {
