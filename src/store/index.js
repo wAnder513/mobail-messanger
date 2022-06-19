@@ -1,11 +1,12 @@
-import { createStore } from 'vuex'
 import axios from 'axios'
+import { createStore } from 'vuex'
 
 export default createStore({
   state: {
     user: {},
     contacts: [],
     currentContactProfile: {},
+    currentUserDialog: {},
   },
   getters: {
     getUser(state) {
@@ -17,6 +18,9 @@ export default createStore({
     getCurrentContactProfile(state) {
       return state.currentContactProfile
     },
+    getCurrentUserDialog(state) {
+      return state.currentUserDialog
+    }
   },
   mutations: {
     SET_USER(state, user) {
@@ -26,29 +30,19 @@ export default createStore({
       contacts.sort((a, b) => {
         if (
           new Date(
-            `${b.chatContact[b.chatContact.length - 1].sendDate} ${
-              b.chatContact[b.chatContact.length - 1].sendTime
-            }`
-          ) >
+            `${b.chatContact[b.chatContact.length - 1].sendDate} 
+             ${b.chatContact[b.chatContact.length - 1].sendTime}` ) >
           new Date(
-            `${a.chatContact[b.chatContact.length - 1].sendDate} ${
-              a.chatContact[a.chatContact.length - 1].sendTime
-            }`
-          )
-        ) {
+            `${a.chatContact[a.chatContact.length - 1].sendDate} 
+             ${a.chatContact[a.chatContact.length - 1].sendTime}`)) {
           return 1
         } else if (
           new Date(
-            `${a.chatContact[b.chatContact.length - 1].sendDate} ${
-              a.chatContact[a.chatContact.length - 1].sendTime
-            }`
-          ) >
+            `${a.chatContact[a.chatContact.length - 1].sendDate} 
+             ${a.chatContact[a.chatContact.length - 1].sendTime}`) >
           new Date(
-            `${b.chatContact[b.chatContact.length - 1].sendDate} ${
-              b.chatContact[b.chatContact.length - 1].sendTime
-            }`
-          )
-        ) {
+            `${b.chatContact[b.chatContact.length - 1].sendDate} 
+             ${b.chatContact[b.chatContact.length - 1].sendTime}`)) {
           return -1
         }
         return 0
@@ -59,11 +53,14 @@ export default createStore({
     SET_CURRENT_CONTACT(state, contactProfile) {
       state.currentContactProfile = contactProfile
     },
+    SET_CURRENT_USER_DIALOG(state, currentUserDialog) {
+      state.currentUserDialog = currentUserDialog
+    },
   },
   actions: {
     getContacts({ commit }) {
       axios
-        .get('http://localhost:3000/contacts')
+        .get('http://localhost:3000/contacts/')
         .catch((err) => console.log(err))
         .then((res) => commit('SET_CONTACTS', res.data))
     },
@@ -76,6 +73,9 @@ export default createStore({
     getCurrentContactsProfile({ commit }, contactProfile) {
       commit('SET_CURRENT_CONTACT', contactProfile)
     },
+    getCurrentUserDialog({commit}, currentDialog) {
+      commit('SET_CURRENT_USER_DIALOG', currentDialog)
+    }
   },
   modules: {},
 })

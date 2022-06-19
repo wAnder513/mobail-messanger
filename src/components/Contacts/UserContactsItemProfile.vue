@@ -1,6 +1,5 @@
 <template>
   <main-wrapper :hasBackButton="true" :title="currentContact.name">
-    <template v-slot:header></template>
     <template v-slot:main>
       <div class="profile">
         <img

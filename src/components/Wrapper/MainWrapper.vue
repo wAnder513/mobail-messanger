@@ -6,8 +6,6 @@
     </div>
 
     <span>{{ title }}</span>
-
-    <slot name="header"></slot>
   </header>
   <main>
     <slot name="main"></slot>
@@ -49,7 +47,6 @@ footer {
 
 main {
   padding: 10px;
-  // height: 300px;
   overflow-x: auto;
 }
 

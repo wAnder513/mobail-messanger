@@ -1,6 +1,5 @@
 <template>
   <main-wrapper :hasBackButton="true" :title="title">
-    <template v-slot:header></template>
     <template v-slot:main>
       <user-messages-dialog
         v-for="contact in contacts"

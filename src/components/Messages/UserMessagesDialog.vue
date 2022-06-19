@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog" @click="userID">
+  <div class="dialog" @click="getCurrentDialog">
     <div class="dialog_container">
       <img
         :src="require('../../assets/' + contact.avatar)"
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -80,8 +80,11 @@ export default {
     }
   },
   methods: {
-    userID () {
-      this.$router.push({ path: '/messages' })
+    ...mapActions(['getCurrentUserDialog']),
+    getCurrentDialog () {
+      this.getCurrentUserDialog(this.contact)
+      
+      this.$router.push({ path: '/message' })
     }
   }
 }
@@ -115,6 +118,7 @@ export default {
 
 .dialog_name {
   font-size: 18px;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 

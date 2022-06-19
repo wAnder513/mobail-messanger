@@ -15,7 +15,7 @@ const routes = [
     path: '/message',
     name: 'message',
     component: () =>
-      import('../components/Messages/UserMessagesDialogCurrent.vue'),
+      import('../components/Messages/UserMessagesDialogChat.vue'),
   },
   {
     path: '/settings',

@@ -1,6 +1,5 @@
 <template>
   <main-wrapper :title="title">
-    <template v-slot:header></template>
     <template v-slot:main>
       <user-contacts-item
         v-for="(contact, index) in contacts"
