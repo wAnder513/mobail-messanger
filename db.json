@@ -2,6 +2,9 @@
   "user": {
     "avatar": "user.png"
   },
+  "settings": {
+    "darkTheme": true
+  },
   "contacts": [
     {
       "id": 1,
@@ -25,7 +28,7 @@
       "name": "Ilon Mask",
       "avatar": "images.png",
       "profilePhoto": "profile.png",
-      "phone": "8-800-555-99-99",
+      "phone": "8-908-555-11-22",
       "online": false,
       "chatContact": [
         {
@@ -36,11 +39,39 @@
           "sendDate": "06 15 2022"
         },
         {
+          "id": 2,
+          "isContact": true,
+          "message": "I'm serious",
+          "sendTime": "19:48",
+          "sendDate": "06 15 2022"
+        },
+        {
           "id": "19.06.2022, 20:34:17",
           "isContact": false,
           "message": "wow, cool",
           "sendTime": "20:34",
           "sendDate": "06 19 2022"
+        },
+        {
+          "id": "25.06.2022, 09:46:56",
+          "isContact": false,
+          "message": "today",
+          "sendTime": "09:46",
+          "sendDate": "06 25 2022"
+        },
+        {
+          "id": "25.06.2022, 09:47:02",
+          "isContact": false,
+          "message": "today",
+          "sendTime": "09:47",
+          "sendDate": "06 25 2022"
+        },
+        {
+          "id": "26.06.2022, 20:02:13",
+          "isContact": false,
+          "message": "long message test long message test long message test long message test",
+          "sendTime": "20:02",
+          "sendDate": "06 26 2022"
         }
       ]
     },

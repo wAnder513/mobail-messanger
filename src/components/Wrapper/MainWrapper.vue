@@ -7,7 +7,7 @@
 
     <span>{{ title }}</span>
   </header>
-  <main>
+  <main :class="interfaceTheme">
     <slot name="main"></slot>
   </main>
   <footer>
@@ -16,25 +16,33 @@
 </template>
 
 <script>
-import MainWrapperFooter from './MainWrapperFooter.vue'
+import { mapGetters } from "vuex";
+import MainWrapperFooter from "./MainWrapperFooter.vue";
 
 export default {
   components: {
-    MainWrapperFooter
+    MainWrapperFooter,
   },
   props: {
     hasBackButton: { type: Boolean, default: false },
-    title: { type: String, default: '' }
+    title: { type: String, default: "" },
+  },
+  created() {},
+  computed: {
+    ...mapGetters({ isDark: "getTheme" }),
+    interfaceTheme() {
+      return this.isDark ? "dark-theme" : "white-theme";
+    },
   },
   methods: {
-    backToPreviousPage () {
-      this.$router.go(-1)
-    }
-  }
-}
+    backToPreviousPage() {
+      this.$router.go(-1);
+    },
+  },
+};
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 header,
 footer {
   background-color: #c3c3c3;
@@ -48,6 +56,11 @@ footer {
 main {
   padding: 10px;
   overflow-x: auto;
+}
+
+.dark-theme {
+  background-color: black;
+  color: white;
 }
 
 footer {

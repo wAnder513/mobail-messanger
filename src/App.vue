@@ -1,23 +1,21 @@
 <template>
-  <div class="app_wrapper">  
-  </div>
-  <router-view/>
+  <div class="app_wrapper"></div>
+  <router-view />
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-    created() {
-      this.getContacts()
-      this.getUser()
-    },
-    methods: {
-      ...mapActions(['getContacts', 'getUser'])
-    }
-}
+  created() {
+    this.getContacts();
+    this.getUser();
+  },
+  methods: {
+    ...mapActions(["getContacts", "getUser"]),
+  },
+};
 </script>
-
 
 <style>
 #app {
@@ -40,9 +38,13 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: rgb(0, 149, 255);
+}
+
 .app_wrapper {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-} 
+}
 </style>

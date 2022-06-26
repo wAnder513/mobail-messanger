@@ -3,6 +3,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    isDarkTheme: false,
+
     user: {},
     contacts: [],
     currentContactProfile: {},
@@ -20,6 +22,9 @@ export default createStore({
     },
     getCurrentUserDialog(state) {
       return state.currentUserDialog
+    },
+    getTheme(state) {
+      return state.isDarkTheme
     }
   },
   mutations: {
@@ -56,6 +61,9 @@ export default createStore({
     SET_CURRENT_USER_DIALOG(state, currentUserDialog) {
       state.currentUserDialog = currentUserDialog
     },
+    SET_DARK_THEME(state, isDarkTheme) {
+      state.isDarkTheme = isDarkTheme
+    }
   },
   actions: {
     getContacts({ commit }) {
@@ -66,7 +74,7 @@ export default createStore({
     },
     getUser({ commit }) {
       axios
-        .get('http://localhost:3000/user')
+        .get('http://localhost:3000/user/')
         .catch((err) => console.log(err))
         .then((res) => commit('SET_USER', res.data))
     },
@@ -75,6 +83,9 @@ export default createStore({
     },
     getCurrentUserDialog({commit}, currentDialog) {
       commit('SET_CURRENT_USER_DIALOG', currentDialog)
+    },
+    getTheme({commit}, isDarkTheme) {
+      commit('SET_DARK_THEME', isDarkTheme)
     }
   },
   modules: {},

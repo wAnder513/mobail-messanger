@@ -11,15 +11,10 @@
 
         <div class="dialog_message">
           <img
-            v-if="
-              !contact.chatContact[contact.chatContact.length - 1].isContact
-            "
-            :src="require('../../assets/' + user.avatar)"
             class="dialog_user-avatar"
+            :src="require('../../assets/' + user.avatar)"
           />
-          <span>{{
-            contact.chatContact[contact.chatContact.length - 1].message
-          }}</span>
+          <span>{{ textLastMessage }}</span>
         </div>
       </div>
     </div>
@@ -40,6 +35,21 @@ export default {
   },
   computed: {
     ...mapGetters({ user: "getUser" }),
+    textLastMessage() {
+      let lastMessage = "";
+      if (
+        this.contact.chatContact[this.contact.chatContact.length - 1].message
+          .length > 30
+      ) {
+        lastMessage = this.contact.chatContact[
+          this.contact.chatContact.length - 1
+        ].message.slice(0, 30) + "...";
+      } else {
+        lastMessage =
+          this.contact.chatContact[this.contact.chatContact.length - 1].message;
+      }
+      return lastMessage;
+    },
     timeLastMessage() {
       // date display in messages
       const currentDate = new Date();
@@ -55,9 +65,7 @@ export default {
           this.contact.chatContact[this.contact.chatContact.length - 1]
             .sendTime;
       } else if (
-        `${("0" + (currentDate.getMonth() + 1)).slice(
-          -2
-        )} ${currentDate.getDate()} ${
+        `${("0" + (currentDate.getMonth() + 1)).slice(-2)} ${
           currentDate.getDate() - 1
         } ${currentDate.getFullYear()}` ===
         this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
@@ -104,6 +112,7 @@ export default {
 
 .dialog_container {
   display: flex;
+  margin-right: 10px;
 }
 
 .dialog_avatar {

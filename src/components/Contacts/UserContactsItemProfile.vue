@@ -8,11 +8,15 @@
         />
 
         <div class="profile_container">
-          <div class="profile_phone">{{ currentContact.phone }}</div>
+          <a class="profile_phone" :href="'tel:' + currentContact.phone">{{
+            currentContact.phone
+          }}</a>
 
           <div class="profile_name">
-            <button class="profile_call">Call</button>
-            <button class="profile_chat">Start chat</button>
+            <a :href="'tel:' + currentContact.phone" class="profile_call">Call</a>
+            <button class="profile_chat" @click="addContactChat">
+              Start chat
+            </button>
           </div>
         </div>
       </div>
@@ -21,22 +25,30 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import MainWrapper from '../Wrapper/MainWrapper.vue'
+import { mapGetters, mapActions } from "vuex";
+import MainWrapper from "../Wrapper/MainWrapper.vue";
 
 export default {
   components: {
-    MainWrapper
+    MainWrapper,
   },
-  data () {
-    return {}
+  data() {
+    return {};
   },
   computed: {
     ...mapGetters({
-      currentContact: 'getCurrentContactProfile'
-    })
-  }
-}
+      currentContact: "getCurrentContactProfile",
+    }),
+  },
+  methods: {
+    ...mapActions(["getCurrentUserDialog"]),
+    addContactChat() {
+      this.getCurrentUserDialog(this.currentContact);
+
+      this.$router.push({ path: "/message" });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -53,6 +65,7 @@ export default {
 .profile_call {
   margin-right: 5px;
   background-color: green;
+  text-decoration: none;
 }
 
 .profile_chat {
