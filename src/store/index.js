@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { createStore } from 'vuex'
+import axios from "axios";
+import { createStore } from "vuex";
 
 export default createStore({
   state: {
@@ -12,81 +12,81 @@ export default createStore({
   },
   getters: {
     getUser(state) {
-      return state.user
+      return state.user;
     },
     getContacts(state) {
-      return state.contacts
+      return state.contacts;
     },
     getCurrentContactProfile(state) {
-      return state.currentContactProfile
+      return state.currentContactProfile;
     },
     getCurrentUserDialog(state) {
-      return state.currentUserDialog
+      return state.currentUserDialog;
     },
     getTheme(state) {
-      return state.isDarkTheme
-    }
+      return state.isDarkTheme;
+    },
   },
   mutations: {
     SET_USER(state, user) {
-      state.user = user
+      state.user = user;
     },
     SET_CONTACTS(state, contacts) {
       contacts.sort((a, b) => {
         if (
           new Date(
-            `${b.chatContact[b.chatContact.length - 1].sendDate} 
+            `${b.chatContact[b.chatContact.length - 1].sendDate}
              ${b.chatContact[b.chatContact.length - 1].sendTime}` ) >
           new Date(
-            `${a.chatContact[a.chatContact.length - 1].sendDate} 
+            `${a.chatContact[a.chatContact.length - 1].sendDate}
              ${a.chatContact[a.chatContact.length - 1].sendTime}`)) {
           return 1
         } else if (
           new Date(
-            `${a.chatContact[a.chatContact.length - 1].sendDate} 
+            `${a.chatContact[a.chatContact.length - 1].sendDate}
              ${a.chatContact[a.chatContact.length - 1].sendTime}`) >
           new Date(
-            `${b.chatContact[b.chatContact.length - 1].sendDate} 
+            `${b.chatContact[b.chatContact.length - 1].sendDate}
              ${b.chatContact[b.chatContact.length - 1].sendTime}`)) {
           return -1
         }
         return 0
-      })
+      });
 
-      state.contacts = contacts
+      state.contacts = contacts;
     },
     SET_CURRENT_CONTACT(state, contactProfile) {
-      state.currentContactProfile = contactProfile
+      state.currentContactProfile = contactProfile;
     },
     SET_CURRENT_USER_DIALOG(state, currentUserDialog) {
-      state.currentUserDialog = currentUserDialog
+      state.currentUserDialog = currentUserDialog;
     },
     SET_DARK_THEME(state, isDarkTheme) {
-      state.isDarkTheme = isDarkTheme
-    }
+      state.isDarkTheme = isDarkTheme;
+    },
   },
   actions: {
     getContacts({ commit }) {
       axios
-        .get('http://localhost:3000/contacts/')
+        .get("http://localhost:3000/contacts/")
         .catch((err) => console.log(err))
-        .then((res) => commit('SET_CONTACTS', res.data))
+        .then((res) => commit("SET_CONTACTS", res.data));
     },
     getUser({ commit }) {
       axios
-        .get('http://localhost:3000/user/')
+        .get("http://localhost:3000/user/")
         .catch((err) => console.log(err))
-        .then((res) => commit('SET_USER', res.data))
+        .then((res) => commit("SET_USER", res.data));
     },
     getCurrentContactsProfile({ commit }, contactProfile) {
-      commit('SET_CURRENT_CONTACT', contactProfile)
+      commit("SET_CURRENT_CONTACT", contactProfile);
     },
-    getCurrentUserDialog({commit}, currentDialog) {
-      commit('SET_CURRENT_USER_DIALOG', currentDialog)
+    getCurrentUserDialog({ commit }, currentDialog) {
+      commit("SET_CURRENT_USER_DIALOG", currentDialog);
     },
-    getTheme({commit}, isDarkTheme) {
-      commit('SET_DARK_THEME', isDarkTheme)
-    }
+    getTheme({ commit }, isDarkTheme) {
+      commit("SET_DARK_THEME", isDarkTheme);
+    },
   },
   modules: {},
-})
+});

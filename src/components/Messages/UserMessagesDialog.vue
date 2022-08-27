@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -41,9 +42,10 @@ export default {
         this.contact.chatContact[this.contact.chatContact.length - 1].message
           .length > 30
       ) {
-        lastMessage = this.contact.chatContact[
-          this.contact.chatContact.length - 1
-        ].message.slice(0, 30) + "...";
+        lastMessage =
+          this.contact.chatContact[
+            this.contact.chatContact.length - 1
+          ].message.slice(0, 30) + "...";
       } else {
         lastMessage =
           this.contact.chatContact[this.contact.chatContact.length - 1].message;
@@ -56,36 +58,34 @@ export default {
       let visibleDate = "";
 
       if (
-        `${("0" + (currentDate.getMonth() + 1)).slice(
-          -2
-        )} ${currentDate.getDate()} ${currentDate.getFullYear()}` ===
+        // Today time //
+        dayjs().format("MM.DD.YYYY") ===
         this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
       ) {
         visibleDate =
           this.contact.chatContact[this.contact.chatContact.length - 1]
             .sendTime;
       } else if (
-        `${("0" + (currentDate.getMonth() + 1)).slice(-2)} ${
+        // Yesterday //
+        `${("0" + (currentDate.getMonth() + 1)).slice(-2)}.${
           currentDate.getDate() - 1
-        } ${currentDate.getFullYear()}` ===
+        }.${currentDate.getFullYear()}` ===
         this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
       ) {
-        visibleDate = "tomorrow";
+        visibleDate = "yesterday";
       } else if (
-        String(currentDate.getFullYear()) ===
-        new Date(
+        // Mounth and Day //
+        dayjs().format("YYYY") ===
+        dayjs(
           this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
-        ).toLocaleDateString("en-US", {
-          year: "numeric",
-        })
+        ).format("YYYY")
       ) {
-        visibleDate = new Date(
-          this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
-        ).toLocaleDateString("en-US", { month: "short", day: "2-digit" });
+        visibleDate = dayjs().format("MMM D");
       } else {
-        visibleDate = new Date(
+        // Mounth and Year //
+        visibleDate = dayjs(
           this.contact.chatContact[this.contact.chatContact.length - 1].sendDate
-        ).toLocaleDateString("en-US", { year: "numeric", month: "short" });
+        ).format("MMM YYYY");
       }
 
       return visibleDate;

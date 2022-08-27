@@ -32,9 +32,6 @@ export default {
   components: {
     MainWrapper,
   },
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters({
       currentContact: "getCurrentContactProfile",

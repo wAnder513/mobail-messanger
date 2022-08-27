@@ -19,7 +19,7 @@
           "isContact": true,
           "message": "I'm in the office still",
           "sendTime": "08:15",
-          "sendDate": "04 04 2022"
+          "sendDate": "04.04.2022"
         }
       ]
     },
@@ -36,42 +36,42 @@
           "isContact": true,
           "message": "I will buy twitter",
           "sendTime": "19:47",
-          "sendDate": "06 15 2022"
+          "sendDate": "06.15.2022"
         },
         {
           "id": 2,
           "isContact": true,
           "message": "I'm serious",
           "sendTime": "19:48",
-          "sendDate": "06 15 2022"
+          "sendDate": "06.15.2022"
         },
         {
-          "id": "19.06.2022, 20:34:17",
+          "id": "19.06.2022 20:34:17",
           "isContact": false,
           "message": "wow, cool",
           "sendTime": "20:34",
-          "sendDate": "06 19 2022"
+          "sendDate": "06.19.2022"
         },
         {
-          "id": "25.06.2022, 09:46:56",
+          "id": "25.06.2022 09:46:56",
           "isContact": false,
           "message": "today",
           "sendTime": "09:46",
-          "sendDate": "06 25 2022"
+          "sendDate": "06.25.2022"
         },
         {
-          "id": "25.06.2022, 09:47:02",
+          "id": "25.06.2022 09:47:02",
           "isContact": false,
           "message": "today",
           "sendTime": "09:47",
-          "sendDate": "06 25 2022"
+          "sendDate": "06.25.2022"
         },
         {
-          "id": "26.06.2022, 20:02:13",
+          "id": "26.06.2022 20:02:13",
           "isContact": false,
           "message": "long message test long message test long message test long message test",
           "sendTime": "20:02",
-          "sendDate": "06 26 2022"
+          "sendDate": "08.26.2022"
         }
       ]
     },
@@ -88,21 +88,21 @@
           "isContact": false,
           "message": "hello",
           "sendTime": "19:47",
-          "sendDate": "04 02 2021"
+          "sendDate": "04.02.2021"
         },
         {
           "id": 2,
           "isContact": false,
           "message": "how are you?",
           "sendTime": "19:48",
-          "sendDate": "04 02 2021"
+          "sendDate": "04.02.2021"
         },
         {
           "id": 3,
           "isContact": true,
           "message": "Hi, i'm good",
           "sendTime": "19:49",
-          "sendDate": "06 02 2021"
+          "sendDate": "06.02.2021"
         }
       ]
     },
@@ -119,7 +119,7 @@
           "isContact": false,
           "message": "Hi forest, you'r running now?",
           "sendTime": "19:50",
-          "sendDate": "06 14 2022"
+          "sendDate": "06.14.2022"
         }
       ]
     }

@@ -24,6 +24,7 @@
 
 <script>
 import axios from "axios";
+import dayjs from 'dayjs'
 import { mapGetters, mapActions } from "vuex";
 import MainWrapper from "../Wrapper/MainWrapper.vue";
 import UserMessagesDialogChatMessage from "./UserMessagesDialogChatMessage.vue";
@@ -51,25 +52,14 @@ export default {
   methods: {
     ...mapActions(["getContacts", "getCurrentDateMessage"]),
     sendMessage() {
-      let contact,
-        newMessage = {};
+      let contact, newMessage = {};
 
       newMessage = {
-        id: new Date().toLocaleString(),
+        id: new Date().toString(),
         isContact: false,
         message: this.inputMessage,
-        sendTime: `${
-          new Date().getHours() < 10
-            ? "0" + new Date().getHours()
-            : new Date().getHours()
-        }:${
-          new Date().getMinutes() < 10
-            ? "0" + new Date().getMinutes()
-            : new Date().getMinutes()
-        }`,
-        sendDate: `${("0" + (new Date().getMonth() + 1)).slice(
-          -2
-        )} ${new Date().getDate()} ${new Date().getFullYear()}`,
+        sendTime: dayjs().format("HH:mm"),
+        sendDate: dayjs().format('MM.DD.YYYY'),
       };
 
       contact = { ...this.dialog };
